@@ -1,18 +1,17 @@
 import streamlit as st
 import mysql.connector
 from mysql.connector import Error
-from datetime import datetime, date, time
 
 def main():
-    try:
+
+    if st.button('저장'):
         name = st.text_input('이름을 입력하세요')
         birth_date = st.date_input('생년월일')
         birth_time = st.time_input('시간 입력')
 
-        print(type(birth_date))
-        print(type(birth_time))
-
-        if st.button('저장'):
+        try:           
+            print(type(birth_date))
+            print(type(birth_time))
 
             connection = mysql.connector.connect(
                 host = 'database-2.c2tbevxe8w9x.us-east-2.rds.amazonaws.com',
@@ -42,15 +41,15 @@ def main():
                     # print( 'Connected to db : ', record )
                     
 
-    except Error as e:
-        print('db관련 에러 발생', e)
-    
-    finally :
-        # 5. 데이터베이스 실행 명령을 끝냈으면, 
-        #    커서와 커넥션을 모두 닫아준다.
-        cursor.close()
-        connection.close()
-        print('MySQL connection END')
+        except Error as e:
+            print('db관련 에러 발생', e)
+        
+        finally :
+            # 5. 데이터베이스 실행 명령을 끝냈으면, 
+            #    커서와 커넥션을 모두 닫아준다.
+            cursor.close()
+            connection.close()
+            print('MySQL connection END')
 
 if __name__ == '__main__':
     main()
