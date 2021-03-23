@@ -10,11 +10,11 @@ def main():
   
     if sel_menu == 'Select':
         run_select()
-    if sel_menu == 'Insert':
+    elif sel_menu == 'Insert':
         run_insert()
-    if sel_menu == 'Delete':
+    elif sel_menu == 'Delete':
         run_delete()
-    if sel_menu == 'Update':
+    else:
         run_update()
 
 if __name__ == '__main__':
