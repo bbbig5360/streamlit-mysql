@@ -31,20 +31,15 @@ def main():
                 # dictionary형태로 만들어서 준다. 왜냐하면 json형식이 dictionary이기 때문.
 
                 # if option == '오름차순' and checkbutton:
-                if order == 'asc':
-                    query = '''select title, released_year, pages 
-                            from books
-                            where released_year > %s and pages > %s
-                            order by released_year asc;'''
-                else:
-                    query = '''select title, released_year, pages 
-                            from books
-                            where released_year > %s and pages > %s
-                            order by released_year desc;'''
+                query = '''select title, released_year, pages 
+                        from books
+                        where released_year > %s and pages > %s
+                        order by released_year '''+ order + ';'
                 param = (released_year, pages)
                 # 하나의 데이터를 넣은  튜플을 만들때는 ( 데이터, ) !!!!
 
                 cursor.execute(query, param)
+
                 result = cursor.fetchall()
 
                 print(result)
