@@ -34,19 +34,12 @@ def main():
                 cursor.execute(query, record)
                 connection.commit()
 
-                print( '{}개 저장됨'.format(cursor.rowcount) )
-
-                    # 4. 실행 후 커서에서 결과를 빼낸다.
-                    # record = cursor.fetchone()
-                    # print( 'Connected to db : ', record )
-                    
+                print( '{}개 저장됨'.format(cursor.rowcount) )                    
 
         except Error as e:
             print('db관련 에러 발생', e)
         
         finally :
-            # 5. 데이터베이스 실행 명령을 끝냈으면, 
-            #    커서와 커넥션을 모두 닫아준다.
             cursor.close()
             connection.close()
             print('MySQL connection END')
