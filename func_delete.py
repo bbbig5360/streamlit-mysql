@@ -61,7 +61,6 @@ def run_delete():
 
                 cursor.execute(query, param)
                 connection.commit()
-                # 바꾼 데이터를 저장해준다.
             
         except Error as e:
             print('db관련 에러 발생', e)
