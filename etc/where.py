@@ -6,10 +6,6 @@ def main():
     released_year = st.number_input('기준 년도 입력',min_value = 1500, max_value=2030)
     pages = st.number_input('기준 페이지 수 입력', min_value=0, max_value=1000)
 
-    # option = st.radio('정렬을 선택하세요', ['오름차순','내림차순'])
-
-    # checkbutton = st.checkbox('오름차순을 원하면 체크하세요')
-
     order = 'desc'
     if st.checkbox('오름차순을 원한다면 체크(아니라면 내림차순)'):
         order = 'asc'
@@ -30,7 +26,6 @@ def main():
                 cursor = connection.cursor( dictionary= True)
                 # dictionary형태로 만들어서 준다. 왜냐하면 json형식이 dictionary이기 때문.
 
-                # if option == '오름차순' and checkbutton:
                 query = '''select title, released_year, pages 
                         from books
                         where released_year > %s and pages > %s

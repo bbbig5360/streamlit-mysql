@@ -6,18 +6,17 @@ import json
 
 def run_select():
 
-    column_list = ['title', 'author_fname', 'author_lname',
+    column_list = ['book_id', 'title', 'author_fname', 'author_lname',
                     'released_year', 'stock_quantity', 'pages']
 
     selected_col_list = st.multiselect('컬럼을 선택하세요', column_list)
-
+    print(selected_col_list)
     if selected_col_list :
         column_str = ', '.join(selected_col_list)
         # 리스트를 ,를 넣으며 합쳐서 sql문으로 사용한다.
-        query = 'select book_id, ' + column_str + ' from books;'
+        query = 'select ' + column_str + ' from books;'
     else:
         query = '''select * from books;'''
-
 
     try:           
         connection = mysql.connector.connect(
